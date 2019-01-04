@@ -1,16 +1,18 @@
 package com.example.entitylistenerwithnonmanagedfield;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @EntityListeners(MyEntityListener.class)
 @Entity
-public class B {
+public class B extends A {
+
     @Id
     @GeneratedValue
     private Integer id;
     private String name;
-    @Transient
-    private String optional;
 
     public Integer getId() {
         return id;
@@ -28,11 +30,4 @@ public class B {
         this.name = name;
     }
 
-    public String getOptional() {
-        return optional;
-    }
-
-    public void setOptional(String optional) {
-        this.optional = optional;
-    }
 }
